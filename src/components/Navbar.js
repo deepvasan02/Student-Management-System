@@ -1,9 +1,16 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div>Navbar</div>
-  )
+    <div className="col-md-12 bg-dark py-2">
+    <nav className="navbar bg-dark navbar-dark">
+      <Link to={"/"} className="navbar-brand ml-5">
+        Student Management System
+      </Link>
+    </nav>
+  </div>
+  );
 }
 
 export default Navbar;
