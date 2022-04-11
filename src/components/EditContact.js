@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams  } from 'react-router-dom';
+
 const EditContact = () => {
     const {id} = useParams();
   return (
@@ -23,8 +24,8 @@ const EditContact = () => {
 
                         </div>
                         <div className="form-group my-2">
-                            <input type = "submit" placeholder="Update Student" className='btn btn-dark'/>
-                            <Link type = "/" placeholder="Add Student" className='btn btn-danger mr-2'>Cancel</Link>
+                            <input type = "submit" placeholder="Update Student" className='btn btn-dark mx-2'/>
+                            <Link to = "/" placeholder="Add Student" className='btn btn-danger mx-2'>Cancel</Link>
 
                         </div>
                     </form>
