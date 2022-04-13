@@ -15,7 +15,7 @@ const initialState=[
     },
 ];
 
-const contactReducer = (state =initialState,action)=>{
+export const contactReducer = (state =initialState,action)=>{
     switch(action.type){
         case "ADD_CONTACT":
             state = [...state,action.payload];
@@ -38,4 +38,3 @@ const contactReducer = (state =initialState,action)=>{
             return state;
     }
 };
-export default contactReducer;
