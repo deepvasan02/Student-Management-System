@@ -2,18 +2,18 @@
 const initialState=[
     {
         id:0,
-        name:"Ram",
-        phone:8976543330,
-        email: 'ram@ramayana.com',
-        rollno: "B20Ms111",
+        name:"Matt Leblac",
+        phone:9192909912,
+        email: 'matt.1@gmail.com',
+        rollno: "B20MS111",
         status: "Studying",
     },
     {
         id:1,
-        name:"Laxman",
-        phone:8976543300,
-        email:'laxman@ramayana.com',
-        rollno: "B20MX111",
+        name:"David Jordan",
+        phone:9192456721,
+        email:'david.j@gmail.com',
+        rollno: "B20MX123",
         status: "Passout",
     },
 ];
