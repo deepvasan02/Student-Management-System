@@ -18,12 +18,16 @@ const EditContact = ({ contacts, updateContact }) => {
         setName(currentContact.name);
         setEmail(currentContact.email);
         setPhone(currentContact.phone);
+        setRollNo(currentContact.rollno);
+        setStatus(currentContact.status);
     }, [currentContact]);
 
     // States to store details of contact
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
+    const [rollno, setRollNo] = useState("");
+    const [status, setStatus] = useState("");
 
     // submit handler function
     const handleSubmit = (e) => {
@@ -49,6 +53,8 @@ const EditContact = ({ contacts, updateContact }) => {
           email,
           name,
           phone,
+          rollno,
+          status,
         };
          
         // Update contact in db
@@ -92,6 +98,22 @@ const EditContact = ({ contacts, updateContact }) => {
                         value={phone}
                         placeholder={"Phone"}
                         onChange={(e) => setPhone(e.target.value)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                        className="form-control"
+                        value={rollno}
+                        placeholder={"Roll No"}
+                        onChange={(e) => setRollNo(e.target.value)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                        className="form-control"
+                        value={status}
+                        placeholder={"Studying/Passout"}
+                        onChange={(e) => setStatus(e.target.value)}
                         />
                     </div>
                     <div className="form-group d-flex align-items-center justify-content-between my-2">
