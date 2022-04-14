@@ -47,6 +47,32 @@ const EditContact = ({ contacts, updateContact }) => {
             ? contact
             : null
         );
+
+         // Validation for type of name
+         const checkTypeofName = (name) => {
+            for(let i = 0; i < name.length; i++){   
+             if(!(name.charCodeAt(i) > 96 && name.charCodeAt(i) < 123) && !(name.charCodeAt(i) > 64 && name.charCodeAt(i) < 91) && !(name.charCodeAt(i) == 32)){
+                return toast.error("TypeError: Name must be a string.");
+              };
+            };
+            return 0;
+        };
+
+        // Validation for max length of name
+        const checkMaxLengthOfName = (name, maxLengthOfName) => {
+            if(name.length > maxLengthOfName){
+                return toast.error(`LengthError: Length of Name should be less than ’, ${maxLengthOfName}`);
+            };
+            return 0;
+         };
+         
+        // Validation for length of phone number
+        function checkLengthOfPhoneNumber(phone){
+            if(phone.length!==null && phone.length != 10){
+                return toast.error("TypeError: Entered Phone Number is Invalid.");
+            };
+            return 0;
+        };
     
         const data = {
           id: currentContact.id,
@@ -56,12 +82,14 @@ const EditContact = ({ contacts, updateContact }) => {
           rollno,
           status,
         };
-         
-        // Update contact in db
-        updateContact(data);
-        toast.success("Contact updated successfully!!");
-        navigate("/")
-      };
+
+        // Update contact in db if it passes all validations
+        if(!checkTypeofName(name) && !checkMaxLengthOfName(name, 30) && !checkLengthOfPhoneNumber(phone) ){
+            updateContact(data);
+            toast.success("Contact updated successfully!!");
+            navigate("/");
+        }
+    };
 
   return (
     <div className="container">
