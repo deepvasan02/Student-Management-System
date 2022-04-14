@@ -5,7 +5,6 @@ import Home from "./components/Home";
 import AddContact from "./components/AddContact";
 import EditContact from "./components/EditContact";
 import Navbar from "./components/Navbar";
-import './styles.css';
 
 
 // App component
