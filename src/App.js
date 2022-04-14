@@ -1,21 +1,25 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import Home from "./components/Home";
+import AddContact from "./components/AddContact";
+import EditContact from "./components/EditContact";
 import Navbar from "./components/Navbar";
-import './App.css';
+import './styles.css';
 
-function App() {
+
+// App component
+const  App = () => {
   return (
     <div className="App">
+            <ToastContainer />
             <Navbar />
-            <Route exact path="/" >
-              <h1>Home path</h1>
-            </Route>
-            <Route exact path="/add"  >
-              <h1>Add path</h1>
-            </Route>
-            <Route exact path="/edit/:id"  >
-              <h1>Edit path</h1>
-            </Route>
+            <Routes>
+            {/* Routes for different endpoints */}
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/add" element={<AddContact />} />
+            <Route exact path="/edit/:id" element={<EditContact />} />
+            </Routes>
     </div>
   );
 }
