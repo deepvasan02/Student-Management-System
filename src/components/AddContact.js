@@ -38,8 +38,33 @@ const AddContact = ({contacts, addContact}) => {
         if (checkContactPhoneExists.length > 0) {
           return toast.error("This phone number already exists!!");
         };
-
         
+        // Validation for type of name
+        const checkTypeofName = (name) => {
+            for(let i = 0; i < name.length; i++){   
+             if(!(name.charCodeAt(i) > 96 && name.charCodeAt(i) < 123) && !(name.charCodeAt(i) > 64 && name.charCodeAt(i) < 91) && !(name.charCodeAt(i) == 32)){
+                return toast.error("TypeError: Name must be a string.");
+              };
+            };
+            return 0;
+        };
+
+        // Validation for max length of name
+        const checkMaxLengthOfName = (name, maxLengthOfName) => {
+            if(name.length > maxLengthOfName){
+                return toast.error(`LengthError: Length of Name should be less than ’, ${maxLengthOfName}`);
+            };
+            return 0;
+         };
+         
+        // Validation for length of phone number
+        function checkLengthOfPhoneNumber(phone){
+            if(phone.length!==null && phone.length != 10){
+                return toast.error("TypeError: Entered Phone Number is Invalid.");
+            };
+            return 0;
+        };
+           
 
         const data = {
             id: contacts.length > 0 ? contacts[contacts.length - 1].id + 1 : 0,
@@ -50,10 +75,12 @@ const AddContact = ({contacts, addContact}) => {
             status,
         };
  
-        // Add contact to db
-        addContact(data);
-        toast.success("Contact added successfully!!");
-        navigate("/");
+        // Add contact to db if it passes all validations
+        if(!checkTypeofName(name) && !checkMaxLengthOfName(name, 30) && !checkLengthOfPhoneNumber(phone) ){
+            addContact(data);
+            toast.success("Contact added successfully!!");
+            navigate("/");
+        }
     }
 
     return (
