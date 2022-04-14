@@ -10,6 +10,8 @@ const AddContact = ({contacts, addContact}) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
+    const [rollno, setRollNo] = useState("");
+    const [status, setStatus] = useState("");
     let navigate = useNavigate();
 
     // submit handler function
@@ -27,7 +29,7 @@ const AddContact = ({contacts, addContact}) => {
         );
      
         // validate if any of the input fields are empty
-        if (!email || !name || !phone) {
+        if (!email || !name || !phone || !status || !rollno) {
           return toast.warning("Please fill in all fields!!");
         };
         if (checkContactEmailExists.length > 0) {
@@ -37,11 +39,15 @@ const AddContact = ({contacts, addContact}) => {
           return toast.error("This phone number already exists!!");
         };
 
+        
+
         const data = {
             id: contacts.length > 0 ? contacts[contacts.length - 1].id + 1 : 0,
             email,
             name,
             phone,
+            rollno,
+            status,
         };
  
         // Add contact to db
@@ -64,6 +70,12 @@ const AddContact = ({contacts, addContact}) => {
                             </div>
                             <div className="form-group">
                                 <input type = "number" placeholder="Phone Number" className="form-control" value={phone} onChange={(e) => setPhone(e.target.value)}/>
+                            </div>
+                            <div className="form-group">
+                                <input type = "text" placeholder="Roll No" className="form-control" value={rollno} onChange={(e) => setRollNo(e.target.value)}/>
+                            </div>
+                            <div className="form-group">
+                                <input type = "text" placeholder="Studying/Passout" className="form-control" value={status} onChange={(e) => setStatus(e.target.value)}/>
                             </div>
                             <div className="form-group">
                                 <input
